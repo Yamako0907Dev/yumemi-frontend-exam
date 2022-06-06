@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
 
-function App() {
+import axios from "axios";
+
+const endPoint = "https://opendata.resas-portal.go.jp";
+const apiKey = process.env.REACT_APP_RESAS_API_KEY;
+
+const App = () => {
+  const [prefecture, setPrefecture] = useState([]);
+
+  const getPrefectures = async () => {
+    console.log("GET");
+    const { data } = await axios.get(endPoint + "/api/v1/prefectures", {
+      headers: {
+        "X-API-KEY": apiKey,
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+    });
+    setPrefecture(data.result);
+  };
+
+  console.log("array = ,", prefecture);
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Reacttttt
-        </a>
+        <button onClick={getPrefectures}>GET</button>
+        {prefecture.map((item) => {
+          return <div key={`${item.prefName.toString()}`}>{item.prefName}</div>;
+        })}
       </header>
     </div>
   );
-}
+};
 
 export default App;
