@@ -4,11 +4,11 @@
   "private": true,
   "dependencies": {
     "@compiled/react": "^0.10.4",
+    "@emotion/react": "^11.9.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-    "compiled": "^1.19.1",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
     "highcharts": "^10.1.0",

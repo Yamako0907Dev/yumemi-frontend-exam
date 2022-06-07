@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
@@ -36,29 +37,46 @@ const App = () => {
     },
     series: [
       {
-        data: [1, 2, 3],
+        name: "Jane",
+        data: [1, 0, 4],
+      },
+      {
+        name: "John",
+        data: [5, 7, 3],
       },
     ],
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        {prefecture.map((item: Prefectures) => {
-          return (
-            <CheckBox
-              key={`${item.prefName.toString()}`}
-              prefName={item.prefName}
-            ></CheckBox>
-          );
-        })}
+    <div css={{ margin: "20px" }}>
+      <header>
+        <h2>Title</h2>
+      </header>
+      <div className="App-body">
+        <div
+          css={{
+            display: "flex",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+            flexDirection: "row",
+          }}
+        >
+          {prefecture.map((item: Prefectures) => {
+            return (
+              <CheckBox
+                key={`${item.prefName.toString()}`}
+                prefName={item.prefName}
+              ></CheckBox>
+            );
+          })}
+        </div>
         <div>
           <HighchartsReact
             highcharts={Highcharts}
             options={options}
           ></HighchartsReact>
         </div>
-      </header>
+      </div>
     </div>
   );
 };

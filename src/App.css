@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  min-height: 100vh;
+  margin: 20px;
 }
 
 .App-logo {
@@ -13,16 +14,20 @@
   }
 }
 
-.App-header {
+.App-body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 
 .App-link {
   color: #61dafb;
+}
+
+.check-box {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
 @keyframes App-logo-spin {
