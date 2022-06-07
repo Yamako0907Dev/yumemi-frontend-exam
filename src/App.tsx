@@ -52,7 +52,10 @@ const App = () => {
       <header>
         <h2>Title</h2>
       </header>
-      <div className="App-body">
+      <div
+        className="App-body"
+        css={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+      >
         <div
           css={{
             display: "flex",
