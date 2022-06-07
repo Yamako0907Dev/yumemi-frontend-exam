@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import React, { useEffect, useState } from "react";
-import "./App.css";
 import axios from "axios";
 import { CheckBox } from "./components/CheckBox";
 import HighchartsReact from "highcharts-react-official";
@@ -14,7 +13,7 @@ interface Prefectures {
   prefName: string;
 }
 
-const App = () => {
+const App: React.FC = () => {
   const [prefecture, setPrefecture] = useState<Prefectures[]>([]);
 
   useEffect(() => {
@@ -31,9 +30,21 @@ const App = () => {
     getPrefectures();
   }, []);
 
+  
+
   const options = {
     title: {
       text: "My chart",
+    },
+    yAxis: {
+      title: {
+        text: "人口数",
+      },
+    },
+    xAxis: {
+      title: {
+        text: "年度",
+      },
     },
     series: [
       {
@@ -53,7 +64,6 @@ const App = () => {
         <h2>Title</h2>
       </header>
       <div
-        className="App-body"
         css={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
       >
         <div
