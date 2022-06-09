@@ -72,11 +72,15 @@ const App: React.FC = () => {
     prefecture: Prefectures
   ): void => {
     const { prefCode } = prefecture;
+
     setCheckPrefecture({
       ...checkPrefecture,
       [prefCode]: event.target.checked,
     });
-    if (event.target.checked) getPrefecturePopulation(prefecture);
+    const prefeApiList = Object.keys(checkPrefecture);
+    const apiAlreadyGet = prefeApiList.includes(prefCode.toString());
+    if (event.target.checked && !apiAlreadyGet)
+      getPrefecturePopulation(prefecture);
   };
 
   const options = {
@@ -94,16 +98,6 @@ const App: React.FC = () => {
       },
     },
     series: chartData,
-    // series: [
-    //   {
-    //     name: "Jane",
-    //     data: [1, 0, 4],
-    //   },
-    //   {
-    //     name: "John",
-    //     data: [5, 7, 3],
-    //   },
-    // ],
   };
 
   return (
